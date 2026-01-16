@@ -22,3 +22,23 @@ Official implementation of **UNOP** (Unsupervised Neural Operator), a unified fr
 ```bash
 git clone https://github.com/xinrrr0408/UNOP.git
 cd UNOP
+
+# Create conda environment
+conda create -n unop python=3.9 -y
+conda activate unop
+
+# Install dependencies
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+pip install torch_scatter torch_sparse torch_cluster -f https://data.pyg.org/whl/torch-2.0.0+cu118.html
+pip install torch_geometric
+pip install -r requirements.txt
+
+
+📂 Data Preparation
+1D & 2D Problems: Please refer to the data generation code provided in the MNCP repository.
+3D Problems: Please refer to the processed data provided in the Transolver repository.
+
+
+python scripts/inference.py \
+    --config configs/navier_stokes.yaml \
+    --model checkpoints/model_best.pt
